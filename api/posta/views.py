@@ -1,6 +1,6 @@
-from django.shortcuts import render
 from django.http import HttpResponse
 from rest_framework.decorators import api_view
+from django.shortcuts import render
 
 
 @api_view(['GET'])
@@ -14,3 +14,11 @@ def facebook_pages(request):
     facebook_page_id = "67509909999999"
     graph = 'https://graph.facebook.com/'
     return HttpResponse(graph + facebook_page_id + '/' + 'accounts?', "feed", message='test message' + page_access_token)
+
+@api_view(['GET'])
+def privacypolicy(request):
+    return render('templates/termsfeed-privacy-policy-html.html')
+
+@api_view(['GET'])
+def termsservice(request):
+    return render('templates/ttermsfeed-terms-service-html.html')
