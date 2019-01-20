@@ -1,7 +1,6 @@
 from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from django.shortcuts import render
-import requests
 
 @api_view(['GET'])
 def index(request):
@@ -23,8 +22,8 @@ def facebook_pages(request):
 
 @api_view(['GET'])
 def privacypolicy(request):
-    return render('templates/termsfeed-privacy-policy-html.html')
+    return render('Privacy Policy', 'templates/termsfeed-privacy-policy-html.html')
 
 @api_view(['GET'])
 def termsservice(request):
-    return render('templates/ttermsfeed-terms-service-html.html')
+    return render('Terms of Service', 'templates/ttermsfeed-terms-service-html.html')
