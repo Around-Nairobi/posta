@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from django.shortcuts import render
-
+import requests
 
 @api_view(['GET'])
 def index(request):
@@ -10,10 +10,16 @@ def index(request):
 
 @api_view(['POST'])
 def facebook_pages(request):
-    page_access_token = "YOUR TOKEN GOES HERE"
-    facebook_page_id = "67509909999999"
-    graph = 'https://graph.facebook.com/'
-    return HttpResponse(graph + facebook_page_id + '/' + 'accounts?', "feed", message='test message' + page_access_token)
+    try:
+      page_access_token = request.GET.get('page_access_token')
+      facebook_page_id = request.GET.get('facebook_page_id')
+      message = request.GET.get('message')
+      graph = 'https://graph.facebook.com/'
+      r = request.POST(graph + facebook_page_id + '/' + 'feed' + message + '/' + page_access_token)
+      return HttpResponse(r)
+    except request.ConnectionError:
+      return("failed to connect")
+
 
 @api_view(['GET'])
 def privacypolicy(request):
