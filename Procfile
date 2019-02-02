@@ -1,1 +1,1 @@
-web: gunicorn api/api:manage.py
+web: gunicorn api.api:manage.py
