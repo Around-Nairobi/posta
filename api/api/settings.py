@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'MSAFIRI',
     'TBTIA',
     'posta',
-    'TM'
+    'TM',
+    'api'
 ]
 
 MIDDLEWARE = [
