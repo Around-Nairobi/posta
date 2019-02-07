@@ -1,9 +1,14 @@
+import os
 from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from django.shortcuts import render
 import requests
 import time
 from .models import errors
+
+facebook_graph_call_url = os.environ.get('facebook_graph_call_url')
+
+
 
 @api_view(['GET'])
 def index(request):
@@ -49,13 +54,25 @@ def content(page_access_token, facebook_page_id, purpose, load , load_item):
       "load": load,
       "load_item": load_item
     }
+    # return requests.post(facebook_graph_call, data)
     return requests.post('https://aroundnairobi.herokuapp.com/posta/facebook_graph_call', data)
 
-def runner():
+@api_view(['GET'])
+def runner(request):
     '''This runner is called by a cron job on heroku that is triggered at certain times of the day
        It does the simple duty of calling the functions.
     '''
-    pass
+    # domain_url = os.environ.get('domain_url')
+    domain_url = 'https://aroundnairobi.herokuapp.com/'
+    # urls = ['posta/crowdie', 'posta/hschool']
+    urls = os.environ.get('urls')
+
+    for x in urls:
+      trigger = ('{}'.format(domain_url + x))
+      print('trigger', trigger)
+      requests.get(x)
+      return
+
 
 @api_view(['GET'])
 def privacypolicy(request):
