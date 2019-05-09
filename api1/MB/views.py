@@ -10,9 +10,9 @@ facebook_page_id = os.environ.get('MB_PAGE_ID')
 purpose, load , load_item
 '''
 @api_view(['GET'])
-def index():
-    return 'This is Mentor_Bot'
+def index(request):
+    return HttpResponse('This is Mentor_Bot')
 
 @api_view(['POST'])
-def get_twitter():
+def get_twitter(request):
     return(content(page_access_token, facebook_page_id, 'purpose', 'load ', 'load_item'))
