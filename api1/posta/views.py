@@ -55,7 +55,7 @@ def content(page_access_token, facebook_page_id, purpose, load , load_item):
       "load_item": load_item
     }
     # return requests.post(facebook_graph_call, data)
-    return requests.post('https://aroundnairobi.herokuapp.com/posta/facebook_graph_call', data)
+    return requests.post('https://posta-ke.herokuapp.com/facebook_graph_call', data)
 
 @api_view(['GET'])
 def runner(request):
@@ -63,7 +63,7 @@ def runner(request):
        It does the simple duty of calling the functions.
     '''
     # domain_url = os.environ.get('domain_url')
-    domain_url = 'https://aroundnairobi.herokuapp.com/'
+    domain_url = 'https://posta-ke.herokuapp.com/'
     # urls = ['posta/crowdie', 'posta/hschool']
     urls = os.environ.get('urls')
 
