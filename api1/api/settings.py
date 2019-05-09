@@ -25,7 +25,7 @@ SECRET_KEY = 'k9&b2em^0e$s*k_343ej45g+=5nbqnp=)w=y26+z=us$w26r!p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'aroundnairobi.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'posta-ke.herokuapp.com']
 
 
 # Application definition
