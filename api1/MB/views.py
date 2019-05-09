@@ -1,4 +1,4 @@
-from api.posta.views import content
+from posta.views import content
 import os
 
 '''This scrapper gets data from three on the best mentorship scrappers on the net'''
