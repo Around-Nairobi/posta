@@ -1,1 +1,1 @@
-web: cd api1 && gunicorn api1:manage
+web: gunicorn api1:manage
