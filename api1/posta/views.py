@@ -20,6 +20,7 @@ def generate_token(app_secret, page_id, access_token):
     access_token_url = "https://graph.facebook.com/oauth/access_token?grant_type=fb_exchange_token&client_id={}&client_secret={}&fb_exchange_token={}".format(page_id, app_secret, access_token)
     r = requests.get(access_token_url)
     access_token_info = r.json()
+    print(access_token_info['access_token'])
     return access_token_info['access_token']
 
 
