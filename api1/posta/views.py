@@ -13,7 +13,7 @@ facebook_graph_call_url = os.environ.get('facebook_graph_call_url')
 @api_view(['GET'])
 def index(request):
     if request:
-      return HttpResponse("funtimes")
+      return HttpResponse("This is posta")
 
 
 @api_view(['POST'])
@@ -37,7 +37,7 @@ def facebook_graph_call(request):
               if 'error' in r:
                 return HttpResponse('this is not good')
               else:
-                return HttpResponse(r)
+                return HttpResponse(r, url)
           else:
               return HttpResponse('Not Found', status=404)
         except requests.ConnectionError:
