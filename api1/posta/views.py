@@ -35,9 +35,9 @@ def facebook_graph_call(request):
               url = "{}{}{}{}{}{}{}{}{}{}{}{}".format(graph,facebook_page_id, '/', purpose, '?', load,'=',load_item, '&', 'access_token', '=', page_access_token)
               r = requests.post(url)
               if 'error' in r:
-                return HttpResponse('this is not good')
+                return HttpResponse('this is not good', url)
               else:
-                return HttpResponse(r, url)
+                return HttpResponse(r,url,  status=200)
           else:
               return HttpResponse('Not Found', status=404)
         except requests.ConnectionError:
