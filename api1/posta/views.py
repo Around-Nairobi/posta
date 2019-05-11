@@ -20,7 +20,7 @@ def generate_token(app_secret, page_id, access_token):
     access_token_url = "https://graph.facebook.com/oauth/access_token?grant_type=fb_exchange_token&client_id={}&client_secret={}&fb_exchange_token={}".format(page_id, app_secret, access_token)
     r = requests.get(access_token_url)
     access_token_info = r.json()
-    return access_token_info['access_token']
+    return access_token_info
 
 
 
@@ -42,7 +42,7 @@ def facebook_graph_call(request):
           for item in pages_data['data']:
               if item['id'] == facebook_page_id:
                   page_access_token = item['access_token']
-                  
+
           purpose = str(request.POST.get('purpose') )#can be feed, photos, videos,
           load = str(request.POST.get('load')) #can be message, url, link, source, published etc
           load_item = str(request.POST.get('load_item')) #is the item you want posted eg Awesome!
