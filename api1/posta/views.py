@@ -20,7 +20,6 @@ def generate_token(app_secret, page_id, access_token):
     access_token_url = "https://graph.facebook.com/oauth/access_token?grant_type=fb_exchange_token&client_id={}&client_secret={}&fb_exchange_token={}".format(page_id, app_secret, access_token)
     r = requests.get(access_token_url)
     access_token_info = r.json()
-    print(access_token_info)
     return access_token_info['access_token']
 
 
@@ -47,14 +46,20 @@ def facebook_graph_call(request):
           purpose = str(request.POST.get('purpose') )#can be feed, photos, videos,
           load = str(request.POST.get('load')) #can be message, url, link, source, published etc
           load_item = str(request.POST.get('load_item')) #is the item you want posted eg Awesome!
+
+
           if purpose and load and load_item:
-              graph = 'https://graph.facebook.com/'
-              url = "{}{}{}{}{}{}{}{}{}{}{}{}".format(graph,facebook_page_id, '/', purpose, '?', load,'=',load_item, '&', 'access_token', '=', user_long_token)
-              r = requests.post(url)
+              r = graph.post(id=facebook_page_id,
+                                            field = purpose,
+                                            load = load_item)
+
+              # graph = 'https://graph.facebook.com/'
+              # url = "{}{}{}{}{}{}{}{}{}{}{}{}".format(graph,facebook_page_id, '/', purpose, '?', load,'=',load_item, '&', 'access_token', '=', page_access_token)
+              # r = requests.post(url)
               if 'error' in r:
-                return HttpResponse('this is not good', url)
+                return HttpResponse('this is not good')
               else:
-                return HttpResponse(r,url,  status=200)
+                return HttpResponse(r, status=200)
           else:
               return HttpResponse('Not Found', status=404)
         except requests.ConnectionError:
