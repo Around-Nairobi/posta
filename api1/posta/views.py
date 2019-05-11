@@ -38,7 +38,7 @@ def facebook_graph_call(request):
     if page_access_token and facebook_page_id:
         try:
           user_long_token = generate_token(app_secret, facebook_page_id, page_access_token)
-          graph = facebook.GraphAPI(access_token=user_long_token, version="2.7")
+          graph = facebook.GraphAPI(access_token=user_long_token, version="3.1")
           pages_data = graph.get_object("/me/accounts")
           for item in pages_data['data']:
               if item['id'] == facebook_page_id:
