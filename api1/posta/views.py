@@ -1,4 +1,5 @@
 import os
+import facebook
 from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from django.shortcuts import render
@@ -15,6 +16,13 @@ def index(request):
     if request:
       return HttpResponse("This is posta")
 
+def generate_token(app_secret, page_id, access_token):
+    access_token_url = "https://graph.facebook.com/oauth/access_token?grant_type=fb_exchange_token&client_id={}&client_secret={}&fb_exchange_token={}".format(page_id, app_secret, access_token)
+    r = requests.get(access_token_url)
+    access_token_info = r.json()
+    return access_token_info['access_token']
+
+
 
 @api_view(['POST'])
 def facebook_graph_call(request):
@@ -24,15 +32,23 @@ def facebook_graph_call(request):
     """
     page_access_token = str(request.POST.get('page_access_token'))
     facebook_page_id = str(request.POST.get('facebook_page_id'))
+    app_secret = str(request.POST.get('app_secret'))
 
     if page_access_token and facebook_page_id:
         try:
+          user_long_token = generate_token(app_secret, facebook_page_id, page_access_token)
+          graph = facebook.GraphAPI(access_token=user_long_token, version="2.7")
+          pages_data = graph.get_object("/me/accounts")
+          for item in pages_data['data']:
+              if item['id'] == facebook_page_id:
+                  page_access_token = item['access_token']
+                  
           purpose = str(request.POST.get('purpose') )#can be feed, photos, videos,
           load = str(request.POST.get('load')) #can be message, url, link, source, published etc
           load_item = str(request.POST.get('load_item')) #is the item you want posted eg Awesome!
           if purpose and load and load_item:
               graph = 'https://graph.facebook.com/'
-              url = "{}{}{}{}{}{}{}{}{}{}{}{}".format(graph,facebook_page_id, '/', purpose, '?', load,'=',load_item, '&', 'access_token', '=', page_access_token)
+              url = "{}{}{}{}{}{}{}{}{}{}{}{}".format(graph,facebook_page_id, '/', purpose, '?', load,'=',load_item, '&', 'access_token', '=', user_long_token)
               r = requests.post(url)
               if 'error' in r:
                 return HttpResponse('this is not good', url)
