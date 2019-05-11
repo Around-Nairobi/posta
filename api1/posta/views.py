@@ -43,7 +43,7 @@ def facebook_graph_call(request):
         except requests.ConnectionError:
           return("failed to connect")
     else:
-          return HttpResponse('Bad Request', status=400)
+          return HttpResponse('Bad Request', page_access_token, facebook_page_id, status=400)
 
 def content(page_access_token, facebook_page_id, purpose, load , load_item):
     '''call this function and pass all the content you need to pass'''
