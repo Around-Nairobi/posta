@@ -15,11 +15,29 @@ purpose, load , load_item
 def index(request):
     return HttpResponse('This is Mentor_Bot')
 
+def scrapper():
+      '''scraps data from websites and formats it'''
+      '''purpose can be: feed, picture etc'''
+      data = {
+        "purpose": "feed",
+        "load": "load",
+        "load_item": "load_item"
+      }
+      return data
+      
 @api_view(['POST'])
-def post_on_mb_page(request):
-    page_access_token = str(request.POST.get('page_access_token'))
-    facebook_page_id = str(request.POST.get('facebook_page_id'))
+def sample_request():
+      purpose='feed'
+      load='message'
+      load_item='For all Math geniuses :)'
+      link='www.projecteuler.net'
+      return purpose, load, load_item
+
+@api_view(['POST'])
+def post_on_mb_page():
+    '''sends formated posts to facebook page'''
     if page_access_token and facebook_page_id:
-        return(content(page_access_token, facebook_page_id, 'purpose', 'load ', 'load_item'))
+        purpose, load, load_item = sample_request()
+        return(content(page_access_token, facebook_page_id, purpose, load, load_item))
     else:
         return HttpResponse('Add page access token and facebook page id')
