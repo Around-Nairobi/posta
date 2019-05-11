@@ -55,7 +55,8 @@ def content(page_access_token, facebook_page_id, purpose, load , load_item):
       "load_item": load_item
     }
     # return requests.post(facebook_graph_call, data)
-    return requests.post('https://posta-ke.herokuapp.com/facebook_graph_call', data)
+    response = requests.post('https://posta-ke.herokuapp.com/facebook_graph_call', data)
+    return HttpResponse(response)
 
 @api_view(['GET'])
 def runner(request):

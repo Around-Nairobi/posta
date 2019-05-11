@@ -4,5 +4,5 @@ from . import views
 
 urlpatterns = [
     path('mb', views.index, name='index'),
-    path('get_twitter', views.get_twitter, name='get_twitter'),
+    path('post_on_mb_page', views.post_on_mb_page, name='post_on_mb_page'),
 ]
