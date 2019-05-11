@@ -22,14 +22,14 @@ def facebook_graph_call(request):
     This should cater for all end points
     https://graph.facebook.com/{your-page-id}/feed?message=Hello%20world!&access_token={your-page-access-token}
     """
-    page_access_token = request.GET.get('page_access_token')
-    facebook_page_id = request.GET.get('facebook_page_id')
+    page_access_token = str(request.POST.get('page_access_token'))
+    facebook_page_id = str(request.POST.get('facebook_page_id'))
 
     if page_access_token and facebook_page_id:
         try:
-          purpose = request.GET.get('purpose') #can be feed, photos, videos,
-          load = request.GET.get('load') #can be message, url, link, source, published etc
-          load_item = request.GET.get('load_item') #is the item you want posted eg Awesome!
+          purpose = str(request.POST.get('purpose') )#can be feed, photos, videos,
+          load = str(request.POST.get('load')) #can be message, url, link, source, published etc
+          load_item = str(request.POST.get('load_item')) #is the item you want posted eg Awesome!
           if purpose and load and load_item:
               graph = 'https://graph.facebook.com/'
               url = "{}{}{}{}{}{}{}{}{}{}{}{}".format(graph,facebook_page_id, '/', purpose, '?', load,'=',load_item, '&', 'access_token', '=', page_access_token)
