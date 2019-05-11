@@ -21,7 +21,7 @@ def generate_token(app_secret, page_id, access_token):
     r = requests.get(access_token_url)
     access_token_info = r.json()
     print(access_token_info)
-    return access_token_info
+    return access_token_info['access_token']
 
 
 
