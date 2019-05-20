@@ -55,7 +55,7 @@ def facebook_graph_call(request):
 
 
           if purpose and load and load_item:
-              graph = facebook.GraphAPI(access_token=page_access_token, version="3.3")
+              graph = facebook.GraphAPI(access_token=page_access_token, version="3.1")
               r = graph.post(id=facebook_page_id,
                                             field = purpose,
                                             load = load_item)
