@@ -8,6 +8,7 @@ import time
 from .models import errors
 
 facebook_graph_call_url = os.environ.get('facebook_graph_call_url')
+domain_url = os.environ.get('domain_url')
 
 
 
@@ -84,7 +85,6 @@ def content(page_access_token, facebook_page_id,app_secret, purpose, load , load
       "load": load,
       "load_item": load_item
     }
-    # return requests.post(facebook_graph_call, data)
     response = requests.post('https://posta-ke.herokuapp.com/facebook_graph_call', data)
     return HttpResponse(response)
 
@@ -93,9 +93,6 @@ def runner(request):
     '''This runner is called by a cron job on heroku that is triggered at certain times of the day
        It does the simple duty of calling the functions.
     '''
-    # domain_url = os.environ.get('domain_url')
-    domain_url = 'https://posta-ke.herokuapp.com/'
-    # urls = ['posta/crowdie', 'posta/hschool']
     urls = os.environ.get('urls')
 
     for x in urls:
