@@ -40,8 +40,8 @@ def facebook_graph_call(request):
 
     if page_access_token and facebook_page_id:
         try:
-          # user_long_token = generate_token(app_secret, facebook_page_id, page_access_token)
-          user_long_token = "EAADZB7Q46ZCksBAJE9gyB7QTQn9Yi34cZAUbll2dUWzqHPyP0jQj1ZAk8cacXo2wwkdCLCvfycZBbzUp0otSBJ0WYYJbZAyh6H3mrmDkvYhyBohcxjYkZBHTZBR2GWQ3WTvGrZCW3MaWqVkJXk32vcZCrRDpH2AHIPZCyiZCvUAfq6gLS7IZAPDP7kDJPzUiFgKPrcVkZD"
+          user_long_token = generate_token(app_secret, facebook_page_id, page_access_token)
+          # user_long_token = "EAADZB7Q46ZCksBAJE9gyB7QTQn9Yi34cZAUbll2dUWzqHPyP0jQj1ZAk8cacXo2wwkdCLCvfycZBbzUp0otSBJ0WYYJbZAyh6H3mrmDkvYhyBohcxjYkZBHTZBR2GWQ3WTvGrZCW3MaWqVkJXk32vcZCrRDpH2AHIPZCyiZCvUAfq6gLS7IZAPDP7kDJPzUiFgKPrcVkZD"
           graph = facebook.GraphAPI(access_token=user_long_token, version="3.1")
           pages_data = graph.get_object("/me/accounts")
           for item in pages_data['data']:
