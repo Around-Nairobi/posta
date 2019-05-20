@@ -10,7 +10,7 @@ import os
 # facebook_page_id = os.environ.get('MB_PAGE_ID')
 
 page_access_token = 'EAADZB7Q46ZCksBAJE9gyB7QTQn9Yi34cZAUbll2dUWzqHPyP0jQj1ZAk8cacXo2wwkdCLCvfycZBbzUp0otSBJ0WYYJbZAyh6H3mrmDkvYhyBohcxjYkZBHTZBR2GWQ3WTvGrZCW3MaWqVkJXk32vcZCrRDpH2AHIPZCyiZCvUAfq6gLS7IZAPDP7kDJPzUiFgKPrcVkZD'
-facebook_page_id = '280294099451467'
+facebook_page_id = '270731800203413'
 app_secret = 'd745c3af46ebff89398fe51ea939a6bd'
 '''
 purpose, load , load_item
