@@ -55,14 +55,14 @@ def facebook_graph_call(request):
 
 
           if purpose and load and load_item:
-              graph = facebook.GraphAPI(access_token=page_access_token, version="3.1")
-              r = graph.post(id=facebook_page_id,
-                                            field = purpose,
-                                            load = load_item)
+              # graph = facebook.GraphAPI(access_token=page_access_token, version="3.1")
+              # r = graph.post(id=facebook_page_id,
+                                            # field = purpose,
+                                            # load = load_item)
 
-              # graph = 'https://graph.facebook.com/'
-              # url = "{}{}{}{}{}{}{}{}{}{}{}{}".format(graph,facebook_page_id, '/', purpose, '?', load,'=',load_item, '&', 'access_token', '=', page_access_token)
-              # r = requests.post(url)
+              graph = 'https://graph.facebook.com/'
+              url = "{}{}{}{}{}{}{}{}{}{}{}{}".format(graph,facebook_page_id, '/', purpose, '?', load,'=',load_item, '&', 'access_token', '=', page_access_token)
+              r = requests.post(url)
               if 'error' in r:
                 return HttpResponse('this is not good')
               else:
