@@ -9,7 +9,7 @@ import os
 # page_access_token = os.environ.get('MB_ACCESS_TOKEN')
 # facebook_page_id = os.environ.get('MB_PAGE_ID')
 
-page_access_token = 'EAADZB7Q46ZCksBAFDJdKc4zW4yLTBNnefqFar7WHYJYZCbGFh0jzutTg78ZAwwyND6lQ2AmKrNMlLXAjlXHZAroQsOq0MUnujkKRDWkdahsurgsEall49Nx5vQh6KD0pYeyuJeVKVSz9hXvGydj284RQZBGvdg6H6CxHWUhsxn8liCugWYTOpjfNIfTG0ZAXZCjcp1sep9eZCDAZDZD'
+page_access_token = 'EAADZB7Q46ZCksBAJE9gyB7QTQn9Yi34cZAUbll2dUWzqHPyP0jQj1ZAk8cacXo2wwkdCLCvfycZBbzUp0otSBJ0WYYJbZAyh6H3mrmDkvYhyBohcxjYkZBHTZBR2GWQ3WTvGrZCW3MaWqVkJXk32vcZCrRDpH2AHIPZCyiZCvUAfq6gLS7IZAPDP7kDJPzUiFgKPrcVkZD'
 facebook_page_id = '280294099451467'
 app_secret = 'd745c3af46ebff89398fe51ea939a6bd'
 '''
