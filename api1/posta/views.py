@@ -9,12 +9,13 @@ from .models import errors
 
 facebook_graph_call_url = os.environ.get('facebook_graph_call_url')
 domain_url = os.environ.get('domain_url')
-endpoints = ['post_on_crowdie_page',
-              'post_on_mb_page',
-              'post_on_msafiri_page',
-              'post_on_tm_page',
-              'post_on_tbtia_page']
-
+endpoints = [
+            "{}{}".format(domain_url,'post_on_crowdie_page'),
+            "{}{}".format(domain_url,'post_on_mb_page'),
+            "{}{}".format(domain_url,'post_on_msafiri_page'),
+            "{}{}".format(domain_url,'post_on_tbtia_page'),
+            "{}{}".format(domain_url,'post_on_tm_page')
+             ]
 
 @api_view(['GET'])
 def index(request):
