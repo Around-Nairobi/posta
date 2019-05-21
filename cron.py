@@ -1,10 +1,11 @@
+import requests
 from apscheduler.schedulers.blocking import BlockingScheduler
 sched = BlockingScheduler()
 
 
 @sched.scheduled_job('interval', minutes=615)
 def job():
-    print('This job is run every minute.'
-)
+    j=requests.get('https://posta-ke.herokuapp.com/')
+    print(j)
 
 sched.start()
