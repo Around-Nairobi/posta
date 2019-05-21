@@ -9,13 +9,19 @@ from .models import errors
 
 facebook_graph_call_url = os.environ.get('facebook_graph_call_url')
 domain_url = os.environ.get('domain_url')
-
+endpoints = ['post_on_crowdie_page',
+              'post_on_mb_page',
+              'post_on_msafiri_page',
+              'post_on_tm_page',
+              'post_on_tbtia_page']
 
 
 @api_view(['GET'])
 def index(request):
     if request:
-      return HttpResponse("This is posta")
+      for endpoint in endpoints:
+        response = requests.post(endpoint)
+        return HttpResponse("This is posta", response)
 
 def generate_token(app_secret, page_id, access_token):
     access_token_url = "https://graph.facebook.com/oauth/access_token?grant_type=fb_exchange_token&client_id={}&client_secret={}&fb_exchange_token={}".format(page_id, app_secret, access_token)
