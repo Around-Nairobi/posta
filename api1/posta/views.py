@@ -143,7 +143,7 @@ def read_email_from_gmail(request):
           for response_part in data:
               if isinstance(response_part, tuple):
                   print('data2', response_part[1])
-                  msg = email.message_from_string(response_part[1])
+                  msg = email.message_from_string(str(response_part[1]))
                   email_subject = msg['subject']
                   email_from = msg['from']
                   print('From : ' + email_from + '\n')
