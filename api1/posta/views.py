@@ -144,4 +144,4 @@ def read_email_from_gmail(request):
                     print('Subject : ' + email_subject + '\n')
 
       except Exception as e:
-        print(str(e))
+        print('error', str(e))
