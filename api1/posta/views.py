@@ -110,9 +110,8 @@ def privacypolicy(request):
 def termsservice(request):
     return render(request, 'termsfeed-terms-service-html.html')
 
-ORG_EMAIL   = "@gmail.com"
-FROM_EMAIL  = "ingari61" + ORG_EMAIL
-FROM_PWD    = "yabqcnhvchqvkytk"
+FROM_EMAIL  = os.environ.get('FROM_EMAIL')
+FROM_PWD    = os.environ.get('FROM_PWD')
 SMTP_SERVER = "imap.gmail.com"
 SMTP_PORT   = 993
 
@@ -125,7 +124,7 @@ def read_email_from_gmail(request):
         mail.select('inbox')
 
         type, data = mail.search(None, 'ALL')
-        print('data', data[1])
+        print('data', data[0])
         mail_ids = data[0]
 
         id_list = mail_ids.split()
