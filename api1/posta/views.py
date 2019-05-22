@@ -118,7 +118,10 @@ SMTP_PORT   = 993
 
 @api_view(['GET'])
 def read_email_from_gmail(request):
-      '''Utility to read email from Gmail Using Python'''
+      '''Utility to read email from Gmail Using Python
+      https://docs.python.org/3/library/email.parser.html
+      https://docs.python.org/3/library/imaplib.html'''
+
       # try:
       mail = imaplib.IMAP4_SSL(SMTP_SERVER)
       mail.login(FROM_EMAIL,FROM_PWD)
@@ -144,7 +147,9 @@ def read_email_from_gmail(request):
               if isinstance(response_part, tuple):
                   print('data2', response_part[1])
                   msg = email.message_from_bytes(response_part[1])
-                  print('data3', msg)
+                  date = msg['(PDT)']
+                  print('data3', date)
+
                   # email_subject = msg['subject']
                   # email_from = msg['from']
                   # print('From : ' + email_from + '\n')
