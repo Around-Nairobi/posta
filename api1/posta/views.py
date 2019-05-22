@@ -14,7 +14,8 @@ endpoints = [
             "{}{}".format(domain_url,'post_on_mb_page'),
             "{}{}".format(domain_url,'post_on_msafiri_page'),
             "{}{}".format(domain_url,'post_on_tbtia_page'),
-            "{}{}".format(domain_url,'post_on_tm_page')
+            "{}{}".format(domain_url,'post_on_tm_page'),
+            "{}{}".format(domain_url,'post_on_hschool_page')
              ]
 
 @api_view(['GET'])
@@ -94,20 +95,6 @@ def content(page_access_token, facebook_page_id,app_secret, purpose, load , load
     }
     response = requests.post('https://posta-ke.herokuapp.com/facebook_graph_call', data)
     return HttpResponse(response)
-
-@api_view(['GET'])
-def runner(request):
-    '''This runner is called by a cron job on heroku that is triggered at certain times of the day
-       It does the simple duty of calling the functions.
-    '''
-    urls = os.environ.get('urls')
-
-    for x in urls:
-      trigger = ('{}'.format(domain_url + x))
-      print('trigger', trigger)
-      requests.get(x)
-      return
-
 
 @api_view(['GET'])
 def privacypolicy(request):

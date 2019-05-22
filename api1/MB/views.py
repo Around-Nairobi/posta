@@ -6,11 +6,10 @@ import os
 '''This scrapper gets data from three on the best mentorship scrappers on the net'''
 '''get access token from app and page id from the page'''
 
-# page_access_token = os.environ.get('MB_ACCESS_TOKEN')
-# facebook_page_id = os.environ.get('MB_PAGE_ID')
+page_access_token = os.environ.get('MB_ACCESS_TOKEN')
+facebook_page_id = os.environ.get('MB_PAGE_ID')
+app_secret = os.environ.get('MB_APP_SECRET')
 
-page_access_token = 'EAAcLyLNtP4YBADbC11Cj219tDNZAkZCfuX400Tz0Rnr0Ov8bx80GHAEoWYvzsN9AAktZAa1ls45ZA6bVRTqmZCZA6k3XcLo7SEFoMv1c6CCs5zzxZB150H8UhgCB34dxKfEinoZCWioFfhHzscceATTZCdQbAPd7axUnzAhJO6n5t3GreyAZCzUZCEkTgZBww1sQlb28eQlCHEcKCQZDZD'
-facebook_page_id = '1983281468620678'
 '''
 purpose, load , load_item
 '''
