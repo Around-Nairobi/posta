@@ -4,6 +4,7 @@ import smtplib
 import time
 import imaplib
 import email
+import struct
 from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from django.shortcuts import render
@@ -127,7 +128,7 @@ def read_email_from_gmail(request):
         print('data', types)
         mail_ids = data[0]
 
-        id_list = mail_ids.split()
+        id_list = struct.unpack('>HH', mail_ids.split())
         first_email_id = int(id_list[0])
         latest_email_id = int(id_list[-1])
 
