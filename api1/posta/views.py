@@ -128,7 +128,8 @@ def read_email_from_gmail(request):
       # print('data', data)
       mail_ids = data[0]
 
-      id_list = struct.unpack('>HH', mail_ids.split())
+      # id_list = struct.unpack('>HH', mail_ids.split())
+      id_list = mail_ids.split()
       print('id_list', id_list)
       first_email_id = int(id_list[0])
       print('first_email_id', first_email_id)
