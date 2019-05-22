@@ -125,14 +125,15 @@ def read_email_from_gmail(request):
         mail.select('inbox')
 
         types, data = mail.search(None, 'ALL')
-        print('data', types)
+        print('data', data)
         mail_ids = data[0]
 
         id_list = struct.unpack('>HH', mail_ids.split())
+        print('id_list', id_list)
         first_email_id = int(id_list[0])
+        print('first_email_id', first_email_id)
         latest_email_id = int(id_list[-1])
-
-        print('data', id_list, first_email_id, latest_email_id )
+        print('latest_email_id', latest_email_id)
 
 
         for i in range(latest_email_id,first_email_id, -1):
