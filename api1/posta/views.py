@@ -125,7 +125,7 @@ def read_email_from_gmail(request):
         mail.select('inbox')
 
         types, data = mail.search(None, 'ALL')
-        print('data', data)
+        # print('data', data)
         mail_ids = data[0]
 
         id_list = struct.unpack('>HH', mail_ids.split())
