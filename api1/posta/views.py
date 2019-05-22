@@ -138,7 +138,7 @@ def read_email_from_gmail(request):
 
 
       for i in range(latest_email_id,first_email_id, -1):
-          typ, data = mail.fetch(i, '(RFC822)' )
+          typ, data = mail.fetch(str(i), '(RFC822)' )
 
           for response_part in data:
               if isinstance(response_part, tuple):
