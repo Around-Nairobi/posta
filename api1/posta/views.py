@@ -119,33 +119,33 @@ SMTP_PORT   = 993
 @api_view(['GET'])
 def read_email_from_gmail(request):
       '''Utility to read email from Gmail Using Python'''
-      try:
-        mail = imaplib.IMAP4_SSL(SMTP_SERVER)
-        mail.login(FROM_EMAIL,FROM_PWD)
-        mail.select('inbox')
+      # try:
+      mail = imaplib.IMAP4_SSL(SMTP_SERVER)
+      mail.login(FROM_EMAIL,FROM_PWD)
+      mail.select('inbox')
 
-        types, data = mail.search(None, 'ALL')
-        # print('data', data)
-        mail_ids = data[0]
+      types, data = mail.search(None, 'ALL')
+      # print('data', data)
+      mail_ids = data[0]
 
-        id_list = struct.unpack('>HH', mail_ids.split())
-        print('id_list', id_list)
-        first_email_id = int(id_list[0])
-        print('first_email_id', first_email_id)
-        latest_email_id = int(id_list[-1])
-        print('latest_email_id', latest_email_id)
+      id_list = struct.unpack('>HH', mail_ids.split())
+      print('id_list', id_list)
+      first_email_id = int(id_list[0])
+      print('first_email_id', first_email_id)
+      latest_email_id = int(id_list[-1])
+      print('latest_email_id', latest_email_id)
 
 
-        for i in range(latest_email_id,first_email_id, -1):
-            typ, data = mail.fetch(i, '(RFC822)' )
+      for i in range(latest_email_id,first_email_id, -1):
+          typ, data = mail.fetch(i, '(RFC822)' )
 
-            for response_part in data:
-                if isinstance(response_part, tuple):
-                    msg = email.message_from_string(response_part[1])
-                    email_subject = msg['subject']
-                    email_from = msg['from']
-                    print('From : ' + email_from + '\n')
-                    print('Subject : ' + email_subject + '\n')
+          for response_part in data:
+              if isinstance(response_part, tuple):
+                  msg = email.message_from_string(response_part[1])
+                  email_subject = msg['subject']
+                  email_from = msg['from']
+                  print('From : ' + email_from + '\n')
+                  print('Subject : ' + email_subject + '\n')
 
-      except Exception as e:
-        print('error', e)
+      # except Exception as e:
+      #   print('error', e)
