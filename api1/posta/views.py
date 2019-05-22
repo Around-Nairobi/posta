@@ -131,6 +131,8 @@ def read_email_from_gmail(request):
         first_email_id = int(id_list[0])
         latest_email_id = int(id_list[-1])
 
+        print('data', id_list, first_email_id, latest_email_id )
+
 
         for i in range(latest_email_id,first_email_id, -1):
             typ, data = mail.fetch(i, '(RFC822)' )
