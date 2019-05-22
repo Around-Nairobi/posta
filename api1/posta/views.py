@@ -110,7 +110,7 @@ def termsservice(request):
 
 ORG_EMAIL   = "@gmail.com"
 FROM_EMAIL  = "ingari61" + ORG_EMAIL
-FROM_PWD    = "ingari@2018"
+FROM_PWD    = "joanawinja@2018"
 SMTP_SERVER = "imap.gmail.com"
 SMTP_PORT   = 993
 
