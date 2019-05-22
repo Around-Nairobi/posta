@@ -115,7 +115,7 @@ SMTP_SERVER = "imap.gmail.com"
 SMTP_PORT   = 993
 
 @api_view(['GET'])
-def read_email_from_gmail():
+def read_email_from_gmail(request):
       '''Utility to read email from Gmail Using Python'''
       try:
         mail = imaplib.IMAP4_SSL(SMTP_SERVER)
