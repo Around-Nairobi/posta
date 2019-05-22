@@ -144,10 +144,11 @@ def read_email_from_gmail(request):
               if isinstance(response_part, tuple):
                   print('data2', response_part[1])
                   msg = email.message_from_bytes(response_part[1])
-                  email_subject = msg['subject']
-                  email_from = msg['from']
-                  print('From : ' + email_from + '\n')
-                  print('Subject : ' + email_subject + '\n')
+                  print('data3', msg)
+                  # email_subject = msg['subject']
+                  # email_from = msg['from']
+                  # print('From : ' + email_from + '\n')
+                  # print('Subject : ' + email_subject + '\n')
 
       # except Exception as e:
       #   print('error', e)
