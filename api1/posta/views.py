@@ -27,7 +27,9 @@ def index(request):
     if request:
       for endpoint in endpoints:
         response = requests.post(endpoint)
-        return HttpResponse("This is posta", response)
+        send_to_email=[]
+        send_to_email.append(response)
+        return HttpResponse("This is posta", send_to_email)
 
 def generate_token(app_secret, page_id, access_token):
     access_token_url = "https://graph.facebook.com/oauth/access_token?grant_type=fb_exchange_token&client_id={}&client_secret={}&fb_exchange_token={}".format(page_id, app_secret, access_token)
@@ -123,7 +125,7 @@ def read_email_from_gmail(request):
         mail.select('inbox')
 
         type, data = mail.search(None, 'ALL')
-        print(data)
+        print('data', data[1])
         mail_ids = data[0]
 
         id_list = mail_ids.split()
