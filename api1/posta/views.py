@@ -148,7 +148,7 @@ def read_email_from_gmail(request):
                   print('data2', response_part[1])
                   msg = email.message_from_bytes(response_part[1])
                   date = msg['(PDT)']
-                  print('data3', date)
+                  print('data3', (date) -1)
 
                   # email_subject = msg['subject']
                   # email_from = msg['from']
