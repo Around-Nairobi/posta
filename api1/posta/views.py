@@ -123,8 +123,8 @@ def read_email_from_gmail(request):
         mail.login(FROM_EMAIL,FROM_PWD)
         mail.select('inbox')
 
-        type, data = mail.search(None, 'ALL')
-        print('data', data[0])
+        types, data = mail.search(None, 'ALL')
+        print('data', types)
         mail_ids = data[0]
 
         id_list = mail_ids.split()
