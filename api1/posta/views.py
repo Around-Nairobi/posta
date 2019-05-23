@@ -5,6 +5,7 @@ import time
 import imaplib
 import email
 import struct
+import re, datetime
 from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from django.shortcuts import render
@@ -147,8 +148,9 @@ def read_email_from_gmail(request):
               if isinstance(response_part, tuple):
                   print('data2', response_part[1])
                   msg = email.message_from_bytes(response_part[1])
-                  date = msg['(PDT)']
-                  print('data3', (date) -1)
+                  date = re.search('\d{2} \d{2} \d{4}', msg)
+                  date = datetime.datetime.strptime(date.group(), '%d %b %Y').date()
+                  print('date',  date)
 
                   # email_subject = msg['subject']
                   # email_from = msg['from']
