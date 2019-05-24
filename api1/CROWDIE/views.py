@@ -30,7 +30,7 @@ def scrapper():
 def sample_request():
       purpose='feed'
       load='message'
-      load_item='For all Math geniuses :)'
+      load_item='Rahman'
       link='www.projecteuler.net'
       return purpose, load, load_item
 
@@ -39,7 +39,6 @@ def post_on_crowdie_page(request):
     '''sends formated posts to facebook page'''
     if page_access_token and facebook_page_id:
         purpose, load, load_item = sample_request()
-        # print(purpose, load, load_item)
         return(content(page_access_token, facebook_page_id, app_secret, purpose, load, load_item))
     else:
         return HttpResponse('Add page access token and facebook page id')
