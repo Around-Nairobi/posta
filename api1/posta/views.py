@@ -129,10 +129,8 @@ def read_email_from_gmail(request):
       mail.select('inbox')
 
       types, data = mail.search(None, 'ALL')
-      # print('data', data)
       mail_ids = data[0]
 
-      # id_list = struct.unpack('>HH', mail_ids.split())
       id_list = mail_ids.split()
       first_email_id = int(id_list[0])
       latest_email_id = int(id_list[-1])
@@ -143,18 +141,16 @@ def read_email_from_gmail(request):
           for response_part in data:
               if isinstance(response_part, tuple):
                   msg = email.message_from_bytes(response_part[1])
-                  # date = re.search('\d{2} \d{2} \d{4}', msg)
-                  # date = datetime.datetime.strptime(date.group(), '%d %b %Y').date()
-                  # print('date',  date)
 
                   email_subject = msg['subject']
                   email_from = msg['from']
                   date = msg['Date']
 
+
                   content = {}
-                  content[email_from]= email_subject
+                  content[email_from]= email_subject, msg
                   print('date', date)
-                  print('fron', email_from)
+                  print('from', email_from)
                   return HttpResponse(content, date )
                   # print('From : ' + email_from + '\n')
                   # print('Subject : ' + email_subject + '\n')
