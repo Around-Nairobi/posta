@@ -148,9 +148,10 @@ def read_email_from_gmail(request):
 
 
                   content = {}
-                  content[email_from]= email_subject, msg
+                  content[email_from]= email_subject
                   print('date', date)
                   print('from', email_from)
+                  print('msg', msg)
                   return HttpResponse(content, date )
                   # print('From : ' + email_from + '\n')
                   # print('Subject : ' + email_subject + '\n')
