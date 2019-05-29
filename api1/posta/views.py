@@ -156,7 +156,7 @@ def read_email_from_gmail(request):
                   page = return_page(email_from)
                   print('page', page)
                   if page:
-                        response = requests.post('{}{}{}{}'.format(domain_url, 'post_on_', page, 'page'))
+                        response = requests.post('{}{}{}{}'.format(domain_url, 'post_on_', page, '_page'))
                         return HttpResponse(response)
                   # print('From : ' + email_from + '\n')
                   # print('Subject : ' + email_subject + '\n')
