@@ -124,43 +124,43 @@ def read_email_from_gmail(request):
       https://docs.python.org/3/library/email.parser.html
       https://docs.python.org/3/library/imaplib.html'''
 
-      try:
-          mail = imaplib.IMAP4_SSL(SMTP_SERVER)
-          mail.login(FROM_EMAIL,FROM_PWD)
-          mail.select('inbox')
+      # try:
+      mail = imaplib.IMAP4_SSL(SMTP_SERVER)
+      mail.login(FROM_EMAIL,FROM_PWD)
+      mail.select('inbox')
 
-          types, data = mail.search(None, 'ALL')
-          mail_ids = data[0]
+      types, data = mail.search(None, 'ALL')
+      mail_ids = data[0]
 
-          id_list = mail_ids.split()
-          first_email_id = int(id_list[0])
-          latest_email_id = int(id_list[-1])
+      id_list = mail_ids.split()
+      first_email_id = int(id_list[0])
+      latest_email_id = int(id_list[-1])
 
-          for i in range(latest_email_id,first_email_id, -1):
-              typ, data = mail.fetch(str(i), '(RFC822)' )
+      for i in range(latest_email_id,first_email_id, -1):
+          typ, data = mail.fetch(str(i), '(RFC822)' )
 
-              for response_part in data:
-                  if isinstance(response_part, tuple):
-                      msg = email.message_from_bytes(response_part[1])
+          for response_part in data:
+              if isinstance(response_part, tuple):
+                  msg = email.message_from_bytes(response_part[1])
 
-                      email_subject = msg['subject']
-                      email_from = msg['from']
-                      date = msg['Date']
+                  email_subject = msg['subject']
+                  email_from = msg['from']
+                  date = msg['Date']
 
 
-                      content = {}
-                      content[email_from]= email_subject
-                      print('date', date)
-                      print('from', email_from)
-                      print('msg', msg)
-                      page = return_page(email_from)
-                      if page:
-                            response = requests.post('{}{}{}{}'.format(domain_url, 'post_on_', page, 'page'))
-                            return HttpResponse(response)
+                  content = {}
+                  content[email_from]= email_subject
+                  print('date', date)
+                  print('from', email_from)
+                  print('msg', msg)
+                  page = return_page(email_from)
+                  if page:
+                        response = requests.post('{}{}{}{}'.format(domain_url, 'post_on_', page, 'page'))
+                        return HttpResponse(response)
                   # print('From : ' + email_from + '\n')
                   # print('Subject : ' + email_subject + '\n')
-      except Exception as e:
-        print('error', e)
+      # except Exception as e:
+      #   print('error', e)
 
 
 def return_page(email_from):
