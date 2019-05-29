@@ -12,7 +12,7 @@ from django.shortcuts import render
 import requests
 import time
 from .models import errors
-from emails import pages
+from .emails import pages
 
 facebook_graph_call_url = os.environ.get('facebook_graph_call_url')
 domain_url = os.environ.get('domain_url')
