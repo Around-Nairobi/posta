@@ -168,4 +168,4 @@ def return_page(email_from):
             if email_from in value:
               return key
             else:
-                  return HttpResponse("Email not found")
+                  return HttpResponse("error")
