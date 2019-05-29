@@ -152,7 +152,7 @@ def read_email_from_gmail(request):
                   content[email_from]= email_subject
                   print('date', date)
                   print('from', email_from)
-                  print('msg', msg)
+                  # print('msg', msg)
                   page = return_page(email_from)
                   if page:
                         response = requests.post('{}{}{}{}'.format(domain_url, 'post_on_', page, 'page'))
