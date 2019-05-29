@@ -1,8 +1,8 @@
 pages = {
-  "TBTIA" :["www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com", ],
-  "CROWDIE":["www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com"],
-  "TM":["www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com"],
-  "SAFIRI":["www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com"],
-  "HS":["www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com"],
-  "MB":["www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com"]
+  "tbtia" :["www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com", ],
+  "crowdie":["www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com"],
+  "tm":["www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com"],
+  "msafiri":["www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com"],
+  "hschool":["www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com"],
+  "mb":["www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com","www.bbc.com"]
 }
