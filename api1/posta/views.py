@@ -165,7 +165,7 @@ def read_email_from_gmail(request):
 
 def return_page(email_from):
       for key, value in pages.items():
-            print('ef', email_from, value)
+            print('ef', email_from, value, pages.items())
             if email_from in value:
               return key
             else:
