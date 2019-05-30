@@ -44,8 +44,6 @@ def generate_token(app_secret, page_id, access_token):
     except KeyError:
         return access_token_info
 
-
-
 @api_view(['POST'])
 def facebook_graph_call(request):
     """
@@ -58,26 +56,12 @@ def facebook_graph_call(request):
 
     if page_access_token and facebook_page_id:
         try:
-          # user_long_token = generate_token(app_secret, facebook_page_id, page_access_token)
-          # user_long_token = "EAADZB7Q46ZCksBAJE9gyB7QTQn9Yi34cZAUbll2dUWzqHPyP0jQj1ZAk8cacXo2wwkdCLCvfycZBbzUp0otSBJ0WYYJbZAyh6H3mrmDkvYhyBohcxjYkZBHTZBR2GWQ3WTvGrZCW3MaWqVkJXk32vcZCrRDpH2AHIPZCyiZCvUAfq6gLS7IZAPDP7kDJPzUiFgKPrcVkZD"
-          # graph = facebook.GraphAPI(access_token=user_long_token, version="3.1")
-          # pages_data = graph.get_object("/me/accounts")
-          # for item in pages_data['data']:
-              # if item['id'] == facebook_page_id:
-                  # page_access_token = item['access_token']
-                  # page_access_token = page_access_token
-
           purpose = str(request.POST.get('purpose') )#can be feed, photos, videos,
           load = str(request.POST.get('load')) #can be message, url, link, source, published etc
           load_item = str(request.POST.get('load_item')) #is the item you want posted eg Awesome!
-
+          link = str(request.POST.get('link')) #link to article
 
           if purpose and load and load_item:
-              # graph = facebook.GraphAPI(access_token=page_access_token, version="3.1")
-              # r = graph.post(id=facebook_page_id,
-                                            # field = purpose,
-                                            # load = load_item)
-
               graph = 'https://graph.facebook.com/'
               url = "{}{}{}{}{}{}{}{}{}{}{}{}".format(graph,facebook_page_id, '/', purpose, '?', load,'=',load_item, '&', 'access_token', '=', page_access_token)
               r = requests.post(url)
@@ -92,7 +76,7 @@ def facebook_graph_call(request):
     else:
           return HttpResponse('Bad Request', page_access_token, facebook_page_id, status=400)
 
-def content(page_access_token, facebook_page_id,app_secret, purpose, load , load_item):
+def content(page_access_token, facebook_page_id,app_secret, purpose, load , load_item, link):
     '''call this function and pass all the content you need to pass'''
     data = {
       "page_access_token": page_access_token,
@@ -100,7 +84,8 @@ def content(page_access_token, facebook_page_id,app_secret, purpose, load , load
       "app_secret": app_secret,
       "purpose": purpose,
       "load": load,
-      "load_item": load_item
+      "load_item": load_item,
+      "link": link
     }
     response = requests.post('https://posta-ke.herokuapp.com/facebook_graph_call', data)
     return HttpResponse(response)
@@ -165,9 +150,7 @@ def read_email_from_gmail(request):
 
 def return_page(email_from):
       for key, value in pages.items():
-            print('ef', email_from, value)
-            if email_from in value:
-              print('ef', email_from, key)
-              return key
-            else:
-                  return "error"
+            for email in value:
+                if email_from is email:
+                    print('ef', email_from, key)
+                    return key

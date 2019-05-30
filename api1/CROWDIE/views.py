@@ -17,15 +17,14 @@ purpose, load , load_item
 def index(request):
     return HttpResponse('This is Crowdie')
 
-def scrapper():
+def scrapper(request):
       '''scraps data from websites and formats it'''
       '''purpose can be: feed, picture etc'''
-      data = {
-        "purpose": "feed",
-        "load": "load",
-        "load_item": "load_item"
-      }
-      return data
+      purpose='feed'
+      load='message'
+      load_item='Rahman'
+      link='www.projecteuler.net'
+      return purpose, load, load_item, link
 
 def sample_request():
       purpose='feed'
