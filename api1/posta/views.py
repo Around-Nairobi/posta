@@ -142,7 +142,8 @@ def read_email_from_gmail(request):
           for response_part in data:
               if isinstance(response_part, tuple):
                   msg = email.message_from_bytes(response_part[1])
-                  data = email.message_from_bytes(response_part[2])
+                  data = {}
+                  data[typ]=msg
                   print('data', data)
 
                   email_subject = msg['subject']
