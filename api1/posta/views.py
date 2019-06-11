@@ -63,7 +63,7 @@ def facebook_graph_call(request):
 
           if purpose and load and load_item:
               graph = 'https://graph.facebook.com/'
-              url = "{}{}{}{}{}{}{}{}{}{}{}{}".format(graph,facebook_page_id, '/', purpose, '?', load,'=',load_item, '&', 'access_token', '=', page_access_token)
+              url = "{}{}{}{}{}{}{}{}{}{}{}{}".format(graph,facebook_page_id, '/', purpose, '?', load,'=',load_item, '&', 'link', '=',link, '&', 'access_token', '=', page_access_token)
               r = requests.post(url)
               if 'error' in r:
                 return HttpResponse('this is not good')
