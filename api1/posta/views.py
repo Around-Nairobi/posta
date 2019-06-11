@@ -136,7 +136,7 @@ def read_email_from_gmail(request):
                   date = msg['Date']
 
                   page = return_page(email_from)
-                  print('page', page)
+                  print('page', page, email_from)
                   if page is not None:
                         content = {}
                         content[email_from]= email_subject
@@ -155,4 +155,4 @@ def return_page(email_from):
                     print('ef', email_from, key)
                     return key
                 else:
-                      return None
+                    return None
