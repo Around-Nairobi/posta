@@ -35,7 +35,7 @@ pages = {
 
     "update@go.facebookmail.com",
     "no-reply@m.mail.coursera.org",
-    "www.bbc.com",
+    "Facebook IQ <update@go.facebookmail.com>",
     "www.bbc.com",
     "www.bbc.com"
     ],
