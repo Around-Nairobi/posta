@@ -59,7 +59,7 @@ def facebook_graph_call(request):
           purpose = str(request.POST.get('purpose') )#can be feed, photos, videos,
           load = str(request.POST.get('load')) #can be message, url, link, source, published etc
           load_item = str(request.POST.get('load_item')) #is the item you want posted eg Awesome!
-          # link = str(request.POST.get('link')) #link to article
+          link = str(request.POST.get('link')) #link to article
 
           if purpose and load and load_item:
               graph = 'https://graph.facebook.com/'
@@ -76,7 +76,7 @@ def facebook_graph_call(request):
     else:
           return HttpResponse('Bad Request', page_access_token, facebook_page_id, status=400)
 
-def content(page_access_token, facebook_page_id,app_secret, purpose, load , load_item):
+def content(page_access_token, facebook_page_id,app_secret, purpose, load , load_item, link):
     '''call this function and pass all the content you need to pass'''
     data = {
       "page_access_token": page_access_token,
@@ -84,8 +84,8 @@ def content(page_access_token, facebook_page_id,app_secret, purpose, load , load
       "app_secret": app_secret,
       "purpose": purpose,
       "load": load,
-      "load_item": load_item
-      # "link": link
+      "load_item": load_item,
+      "link": link
     }
     response = requests.post('https://posta-ke.herokuapp.com/facebook_graph_call', data)
     return HttpResponse(response)

@@ -31,13 +31,13 @@ def sample_request():
       load='message'
       load_item='Rahman'
       link='www.projecteuler.net'
-      return purpose, load, load_item
+      return purpose, load, load_item, link
 
 @api_view(['POST'])
 def post_on_crowdie_page(request):
     '''sends formated posts to facebook page'''
     if page_access_token and facebook_page_id:
-        purpose, load, load_item = sample_request()
-        return(content(page_access_token, facebook_page_id, app_secret, purpose, load, load_item))
+        purpose, load, load_item, link = sample_request()
+        return(content(page_access_token, facebook_page_id, app_secret, purpose, load, load_item, link))
     else:
         return HttpResponse('Add page access token and facebook page id')
