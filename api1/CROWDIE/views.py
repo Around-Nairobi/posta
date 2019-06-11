@@ -11,7 +11,7 @@ facebook_page_id = os.environ.get('CROWDIE_PAGE_ID')
 app_secret = os.environ.get('CROWDIE_APP_SECRET')
 
 '''
-purpose, load , load_item
+purpose, load, load_item
 '''
 @api_view(['GET'])
 def index(request):

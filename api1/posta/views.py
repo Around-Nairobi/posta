@@ -59,7 +59,7 @@ def facebook_graph_call(request):
           purpose = str(request.POST.get('purpose') )#can be feed, photos, videos,
           load = str(request.POST.get('load')) #can be message, url, link, source, published etc
           load_item = str(request.POST.get('load_item')) #is the item you want posted eg Awesome!
-          link = str(request.POST.get('link')) #link to article
+          # link = str(request.POST.get('link')) #link to article
 
           if purpose and load and load_item:
               graph = 'https://graph.facebook.com/'
