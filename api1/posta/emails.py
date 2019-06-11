@@ -2,7 +2,7 @@ pages = {
   "crowdie":[
     "=?utf-8?Q?The=20DEV=20Community?= <yo@dev.to>",
     "Google <no-reply@accounts.google.com>",
-    "www.bbc.com",
+    "Facebook IQ <update@go.facebookmail.com>",
     "www.bbc.com",
     "www.bbc.com",
     "www.bbc.com",
