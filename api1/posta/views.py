@@ -65,8 +65,9 @@ def facebook_graph_call(request):
               graph = 'https://graph.facebook.com/'
               url = "{}{}{}{}{}{}{}{}{}{}{}{}".format(graph,facebook_page_id, '/', purpose, '?', load,'=',load_item, '&', 'link', '=',link, '&', 'access_token', '=', page_access_token)
               r = requests.post(url)
-              if 'error' in r:
-                return HttpResponse('this is not good')
+              for key, value in r.items():
+                if key is 'error':
+                  return HttpResponse('this is not good')
               else:
                 return HttpResponse(r, status=200)
           else:
