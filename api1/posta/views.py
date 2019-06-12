@@ -67,7 +67,7 @@ def facebook_graph_call(request):
               r = requests.post(url)
               for key, value in r.items():
                 if key is 'error':
-                  return HttpResponse('this is not good')
+                  return HttpResponse('this is not good', value)
               else:
                 return HttpResponse(r, status=200)
           else:
