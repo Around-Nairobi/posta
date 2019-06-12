@@ -38,7 +38,7 @@ def sample_request():
 def post_on_mb_page(request):
     '''sends formated posts to facebook page'''
     if page_access_token and facebook_page_id:
-        purpose, load, load_item = sample_request()
+        purpose, load, load_item, link = sample_request()
         return(content(page_access_token, facebook_page_id, purpose, load, load_item, link))
     else:
         return HttpResponse('Add page access token and facebook page id')
