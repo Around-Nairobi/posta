@@ -65,12 +65,12 @@ def facebook_graph_call(request):
               graph = 'https://graph.facebook.com/'
               url = "{}{}{}{}{}{}{}{}{}{}{}{}".format(graph,facebook_page_id, '/', purpose, '?', load,'=',load_item, '&', 'link', '=',link, '&', 'access_token', '=', page_access_token)
               r = requests.post(url)
-              print('r', vars(r))
-              for key, value in r.items():
-                if key is 'error':
-                  return HttpResponse('this is not good', value)
-              else:
-                return HttpResponse(r, status=200)
+              # print('r', vars(r))
+              # for key, value in r.items():
+              #   if key is 'error':
+              #     return HttpResponse('this is not good', value)
+              # else:
+              #   return HttpResponse(r, status=200)
           else:
               return HttpResponse('Not Found', status=404)
         except requests.ConnectionError:
