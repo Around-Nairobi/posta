@@ -68,9 +68,9 @@ def facebook_graph_call(request):
               # print('r', vars(r))
               # for key, value in r.items():
               #   if key is 'error':
-              #     return HttpResponse('this is not good', value)
+              # return HttpResponse('this is not good', value)
               # else:
-              #   return HttpResponse(r, status=200)
+              return HttpResponse(r, status=200)
           else:
               return HttpResponse('Not Found', status=404)
         except requests.ConnectionError:
